@@ -7,6 +7,7 @@ export default function Home() {
     <div>
       <h1>How are you doing</h1>
       <p>nextjs</p>
+      <h2>Caleb</h2>
       
     </div>
   )
