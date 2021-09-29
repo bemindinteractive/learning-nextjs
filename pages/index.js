@@ -3,15 +3,22 @@ import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import Date from '../components/date'
-
-
+import { createClient } from 'contentful'
 import { getSortedPostsData } from '../lib/posts'
 
 export async function getStaticProps() {
+
+  const client = createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_KEY,
+  })
+
+  const res = await client.getEntries({ content_type: 'blog'})
   const allPostsData = getSortedPostsData()
   return {
     props: {
-      allPostsData
+      allPostsData,
+      blog: res.items
     }
   }
 }
