@@ -18,10 +18,21 @@ export async function getStaticProps() {
   return {
     props: {
       allPostsData,
-      blog: res.items
+      blogs: res.items
     }
   }
 }
+
+export default function Recipes({ blogs}) {
+  return (
+    <div className="recipe-list">
+      {blogs.map(blog =>(
+        <BlogCard key={blog.sys.id} recipe={blog} />
+      ))}
+    </div>
+  )
+}
+
 
 export default function Home({ allPostsData }) {
   return (
