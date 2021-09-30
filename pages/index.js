@@ -13,7 +13,7 @@ export async function getStaticProps() {
     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
   })
 
-  const res = await client.getEntries({ content_type: 'blog'})
+  const res = await client.getEntries({ content_type: 'blog' })
   const allPostsData = getSortedPostsData()
   return {
     props: {
@@ -23,10 +23,10 @@ export async function getStaticProps() {
   }
 }
 
-export default function Recipes({ blogs}) {
+export default function Recipes({ blogs }) {
   return (
     <div className="recipe-list">
-      {blogs.map(blog =>(
+      {blogs.map(blog => (
         <BlogCard key={blog.sys.id} recipe={blog} />
       ))}
     </div>
@@ -34,9 +34,14 @@ export default function Recipes({ blogs}) {
 }
 
 
-export default function Home({ allPostsData }) {
+export default function Home({ allPostsData, blogs }) {
   return (
     <Layout home>
+      <div className="recipe-list">
+        {blogs.map(blog => (
+          <BlogCard key={blog.sys.id} recipe={blog} />
+        ))}
+      </div>
       <Head>
         <title>{siteTitle}</title>
       </Head>
