@@ -1,8 +1,8 @@
 // import Head from "next/head";
-// import Layout, { siteTitle } from "../components/layout";
+//import Layout from "../components/layout";
 // import utilStyles from "../styles/utils.module.css";
-// import Link from "next/link";
-// import Date from "../components/date";
+//  import Link from "next/link";
+//  import Date from "../components/date";
 // import { getSortedPostsData } from "../lib/posts";
 import { createClient } from "contentful";
 import BLogCard from "../components/BlogCard";
@@ -65,16 +65,7 @@ export default function Recipes({ blogs }) {
         {blogs.map((blog) => (
           <BLogCard key={blog.sys.id} recipe={blog} />
         ))}
-
-        <style jsx>{`
-          .recipe-list {
-            display: felx;
-            flex-direction: column;
-            max-width: 30vh;
-            max-height: 30vh;
-          }
-        `}</style>
       </div>
     </>
-  );
-7}
+  )
+}
