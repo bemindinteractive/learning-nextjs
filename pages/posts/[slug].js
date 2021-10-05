@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { createClient } from "contentful";
 
 const client = createClient({
@@ -39,7 +40,12 @@ export default function Blogdetails({ blogPost }) {
   return (
     <>
       <h1>{blogPost.fields.title}</h1>
-      <img src={`https:${blogPost.fields.image.fields.file.url}`} />
+      <Image
+        src={`https:${blogPost.fields.image.fields.file.url}`}
+        width={blogPost.fields.image.fields.file.details.image.width}
+        height={blogPost.fields.image.fields.file.details.image.height}
+        alt="test"
+      />
     </>
   );
 }
