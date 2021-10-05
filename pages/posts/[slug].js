@@ -1,43 +1,45 @@
 import { createClient } from "contentful";
 
 const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_KEY,
-  })
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_KEY,
+});
 
 export const getStaticPaths = async () => {
-    const res = await client.getEntries({
-        content_type: 'blog'
-    })
+  const res = await client.getEntries({
+    content_type: "blog",
+  });
 
-    const paths = res.items.map(item => {
-        return {
-            params: { slug: item.fields.slug }
-        }
-    })
-
+  const paths = res.items.map((item) => {
     return {
-        paths,
-        fallback: false
-    }
-}
+      params: { slug: item.fields.slug },
+    };
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
 
 export async function getStaticProps({ params }) {
-    const { item } = await client.getEntries({
-        content_type: 'blog',
-        'fields.slug': params.slug
-    })
-    
-    return {
-        props: { blog: item }
-    }
+  const { items } = await client.getEntries({
+    content_type: "blog",
+    "fields.slug": params.slug,
+  });
+
+  return {
+    props: { blogPost: items[0] },
+  };
 }
 
-export default function Blogdetails({ blog }) {
-    console.log(recipe)
-    return (
-        <div>
-            Blog Details
-        </div>
-    )
+export default function Blogdetails({ blogPost }) {
+  console.log(blogPost);
+  console.log(blogPost.fields.image);
+  return (
+    <>
+      <h1>{blogPost.fields.title}</h1>
+      <img src={`https:${blogPost.fields.image.fields.file.url}`} />
+    </>
+  );
 }

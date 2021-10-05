@@ -1,7 +1,7 @@
 // import Image from "next/image";
-import Link from 'next/link'
+import Link from "next/link";
 export default function BLogCard({ recipe }) {
-   const { title, id, thumbnail } = recipe.fields;
+  const { title, id, thumbnail } = recipe.fields;
 
   console.log(recipe.fields.image.fields.file);
   //  console.log(recipe);
@@ -14,9 +14,15 @@ export default function BLogCard({ recipe }) {
             height={recipe.fields.image.fields.file.details.image.height}
             alt="test"
           /> */}
-        <img className="profile-pics" src={"https:" + recipe.fields.image.fields.file.url} alt="test" />
+        <img
+          className="profile-pics"
+          src={"https:" + recipe.fields.image.fields.file.url}
+          alt="test"
+        />
       </div>
-      <Link href={`/pages/${id}`}><a>{title}</a></Link>
+      <Link href={`/pages/${id}`}>
+        <a>{title}</a>
+      </Link>
     </>
   );
 }
