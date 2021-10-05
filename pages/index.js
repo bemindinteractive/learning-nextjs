@@ -58,14 +58,14 @@ export async function getStaticProps() {
   };
 }
 
-export default function Recipes({ blogs }) {
+export default function BlogCards({ blogs }) {
   return (
     <>
       <div className="recipe-list">
         {blogs.map((blog) => (
-          <BLogCard key={blog.sys.id} recipe={blog} />
+          <BLogCard key={blog.sys.id} blog={blog} />
         ))}
       </div>
     </>
-  )
+  );
 }
