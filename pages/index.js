@@ -1,7 +1,7 @@
 // import Head from "next/head";
 //import Layout from "../components/layout";
 // import utilStyles from "../styles/utils.module.css";
-// import Link from "next/link";
+//  import Link from "next/link";
 //  import Date from "../components/date";
 // import { getSortedPostsData } from "../lib/posts";
 import { createClient } from "contentful";
@@ -58,14 +58,14 @@ export async function getStaticProps() {
   };
 }
 
-export default function Recipes({ blogs }) {
+export default function BlogCards({ blogs }) {
   return (
     <>
       <div className="recipe-list">
         {blogs.map((blog) => (
-          <BLogCard key={blog.sys.id} recipe={blog} />
+          <BLogCard key={blog.sys.id} blog={blog} />
         ))}
       </div>
     </>
-  )
+  );
 }

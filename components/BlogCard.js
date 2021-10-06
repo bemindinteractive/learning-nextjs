@@ -1,22 +1,23 @@
 import Image from "next/image";
-import Link from 'next/link'
-export default function BLogCard({ recipe }) {
-   const { title, slug, thumbnail } = recipe.fields;
+import Link from "next/link";
+export default function BLogCard({ blog }) {
+  const { title, id, thumbnail } = blog.fields;
 
-  console.log(recipe.fields.image.fields.file);
-  //  console.log(recipe);
+  console.log(blog.fields.image.fields.file);
   return (
-    <div>
-      <div className='recipe-list'>
+    <>
+      <div className="featured">
         <Image
-            src={"https:" + thumbnail.fields.file.url}
-            width={thumbnail.fields.file.details.image.width}
-            height={thumbnail.fields.file.details.image.height}
-            alt="test"
-          />
+          className="profile-pics"
+          src={"https:" + blog.fields.thumbnail.fields.file.url}
+          width={blog.fields.thumbnail.fields.file.details.image.width}
+          height={blog.fields.thumbnail.fields.file.details.image.height}
+          alt="test"
+        />
       </div>
-      <Link href={`/posts/${slug}`}><a>{title}</a></Link>
-
-    </div>
+      <Link href={`/pages/${id}`}>
+        <a>{title}</a>
+      </Link>
+    </>
   );
 }
