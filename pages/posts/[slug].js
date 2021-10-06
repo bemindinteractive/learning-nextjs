@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { createClient } from "contentful";
 
 const client = createClient({
@@ -37,15 +38,28 @@ export async function getStaticProps({ params }) {
 export default function Blogdetails({ blogPost }) {
   console.log(blogPost);
   console.log(blogPost.fields.image);
+  const { thumbnail, title } = blogPost.fields;
   return (
-    <>
-      <h1>{blogPost.fields.title}</h1>
-      <Image
-        src={`https:${blogPost.fields.image.fields.file.url}`}
-        width={blogPost.fields.image.fields.file.details.image.width}
-        height={blogPost.fields.image.fields.file.details.image.height}
-        alt="test"
-      />
-    </>
+    <div>
+      <div className="blog">
+        <Image
+          src={"https:" + thumbnail.fields.file.url}
+          width={thumbnail.fields.file.details.image.width}
+          height={thumbnail.fields.file.details.image.height}
+          alt="test"
+        />
+        <h2 style={{ color: "#0070f3" }}>{title}</h2>
+        <Link href="/">
+          <a>← Back to home</a>
+        </Link>
+      </div>
+      <style jsx>{`
+        .blog {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      `}</style>
+    </div>
   );
 }
