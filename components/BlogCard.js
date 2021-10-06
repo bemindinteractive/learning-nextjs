@@ -1,7 +1,7 @@
 // import Image from "next/image";
 import Link from 'next/link'
 export default function BLogCard({ recipe }) {
-   const { title, id, thumbnail } = recipe.fields;
+   const { title, slug, thumbnail } = recipe.fields;
 
   console.log(recipe.fields.image.fields.file);
   //  console.log(recipe);
@@ -16,7 +16,7 @@ export default function BLogCard({ recipe }) {
           /> */}
         <img className="profile-pics" src={"https:" + recipe.fields.image.fields.file.url} alt="test" />
       </div>
-      <Link href={`/pages/${id}`}><a>{title}</a></Link>
+      <Link href={`/posts/${slug}`}><a>{title}</a></Link>
     </>
   );
 }

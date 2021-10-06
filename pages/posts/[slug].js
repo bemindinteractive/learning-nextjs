@@ -23,17 +23,17 @@ export const getStaticPaths = async () => {
 }
 
 export async function getStaticProps({ params }) {
-    const { item } = await client.getEntries({
+    const { items } = await client.getEntries({
         content_type: 'blog',
         'fields.slug': params.slug
     })
     
     return {
-        props: { blog: item }
+        props: { recipe: items }
     }
 }
 
-export default function Blogdetails({ blog }) {
+export default function Blogdetails({ recipe }) {
     console.log(recipe)
     return (
         <div>
