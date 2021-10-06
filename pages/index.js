@@ -6,15 +6,18 @@ export async function getStaticProps() {
     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
   });
 
-  const res = await client.getEntries({ content_type: "blog" });
+  const res = await client.getEntries({ content_type: "recipe" });
 
   return {
     props: {
-      blogs: res.items,
+      recipes: res.items,
     },
   };
 }
 
 export default function Recipes({ recipes }) {
+  console.log(recipes);
   return <div className="recipe-list">Recipe List</div>;
 }
+
+
