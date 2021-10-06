@@ -15,8 +15,6 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home(props) {
-  console.log(props);
-  console.log(props.blog);
-  return <>Hello World</>;
+export default function Recipes({ recipes }) {
+  return <div className="recipe-list">Recipe List</div>;
 }
