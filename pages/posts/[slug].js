@@ -1,9 +1,11 @@
 import { createClient } from "contentful";
-
+import Image from 'next/image'
+import Link from 'next/link';
+//import BLogCard from "../../components/BlogCard";
 const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
-  })
+})
 
 export const getStaticPaths = async () => {
     const res = await client.getEntries({
@@ -27,17 +29,36 @@ export async function getStaticProps({ params }) {
         content_type: 'blog',
         'fields.slug': params.slug
     })
-    
+
     return {
-        props: { recipe: items }
+        props: { recipe: items[0] }
     }
 }
 
 export default function Blogdetails({ recipe }) {
-    console.log(recipe)
+    console.log(recipe);
+    const { thumbnail, title } = recipe.fields
     return (
         <div>
-            Blog Details
+            <div className="blog">
+                <Image
+                    src={'https:' + thumbnail.fields.file.url}
+                    width={thumbnail.fields.file.details.image.width}
+                    height={thumbnail.fields.file.details.image.height}
+                    alt="test"
+                />
+                <h2 style={{color: "#0070f3"}}>{title}</h2>
+                <Link href="/">
+                    <a>← Back to home</a>
+                </Link>
+            </div>
+            <style jsx>{`
+                .blog {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+            `}</style>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-// import Image from "next/image";
+import Image from "next/image";
 import Link from 'next/link'
 export default function BLogCard({ recipe }) {
    const { title, slug, thumbnail } = recipe.fields;
@@ -6,17 +6,17 @@ export default function BLogCard({ recipe }) {
   console.log(recipe.fields.image.fields.file);
   //  console.log(recipe);
   return (
-    <>
-      <div className="featured">
-        {/* <Image
-            src={"https:" + recipe.fields.image.fields.file.url}
-            width={recipe.fields.image.fields.file.details.image.width}
-            height={recipe.fields.image.fields.file.details.image.height}
+    <div>
+      <div className='recipe-list'>
+        <Image
+            src={"https:" + thumbnail.fields.file.url}
+            width={thumbnail.fields.file.details.image.width}
+            height={thumbnail.fields.file.details.image.height}
             alt="test"
-          /> */}
-        <img className="profile-pics" src={"https:" + recipe.fields.image.fields.file.url} alt="test" />
+          />
       </div>
       <Link href={`/posts/${slug}`}><a>{title}</a></Link>
-    </>
+
+    </div>
   );
 }
