@@ -27,7 +27,7 @@ export default function Recipes({ recipes }) {
       <style jsx>{`
         .recipe-list {
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
           justify-content: space-around;
         }
       `}</style>
