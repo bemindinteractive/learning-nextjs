@@ -27,13 +27,9 @@ export default function Recipes({ recipes }) {
 
       <style jsx>{`
         .recipe-list {
-          display: flex;
-          flex-direction: row;
-          height: 100vh;
-          align-items: center;
-          justify-content: center;
-          justify-content: space-between;
-          
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 20px 60px;
         }
       `}</style>
     </div>
