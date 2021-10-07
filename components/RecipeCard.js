@@ -1,8 +1,8 @@
 import Link from 'next/link'
-
 import Image from 'next/image'
-export default function RecipeCard({ recipe }) {
 
+export default function RecipeCard({ recipe }) {
+  
     const { title, slug, cookingTime, thumbnail } = recipe.fields
 
     return (
@@ -14,11 +14,10 @@ export default function RecipeCard({ recipe }) {
                     height={thumbnail.fields.file.details.image.height}
                 />
              </div>         
-            </div>
             <div className="content">
                 <div className="info">
-                    <h4>{ title }</h4>
-                    <p>Take approx { cookingTime } mins to make</p>
+                    <h4>{title}</h4>
+                    <p>Take approx {cookingTime} mins to make</p>
                 </div>
                 <div className="actions">
                     <Link href={'/recipes/' + slug}><a>Cook this</a></Link>
