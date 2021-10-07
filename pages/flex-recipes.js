@@ -1,5 +1,5 @@
 import { createClient } from "contentful";
-import RecipeCard from "..components/RecipeCard";
+import RecipeCard from "../components/RecipeCard";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -24,13 +24,14 @@ export default function Recipes({ recipes }) {
         <RecipeCard key={recipe.sys.id} recipe={recipe}/>
       ))}
 
-      <style jsx>{`
-        .recipe-list {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-        }
-      `}</style>
+        <style jsx>{`
+            .recipe-list {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            }
+        `}</style>
     </div>
   )
 }
