@@ -24,6 +24,18 @@ export default function Recipes({ recipes }) {
       {recipes.map(recipe => (
         <RecipeCard key={recipe.sys.id} recipe={recipe}/>
       ))}
+
+      <style jsx>{`
+        .recipe-list {
+          display: flex;
+          flex-direction: row;
+          height: 100vh;
+          align-items: center;
+          justify-content: center;
+          justify-content: space-between;
+          
+        }
+      `}</style>
     </div>
   )
 }
