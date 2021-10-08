@@ -39,7 +39,7 @@ export async function getStaticProps({ params }) {
 
 export default function RecipeDetails({ recipe }) {
   if (!recipe) return <Skeleton />
-  
+
   const {featuredImage, title, ingredients, cookingTime, method} = recipe.fields
   // console.log(recipe)
   
@@ -50,6 +50,7 @@ export default function RecipeDetails({ recipe }) {
          src={'https:'+ featuredImage.fields.file.url}
          width={featuredImage.fields.file.details.image.width}
          height={featuredImage.fields.file.details.image.height}
+         alt='test'
         />
         <h2>{ title }</h2>
       </div>
